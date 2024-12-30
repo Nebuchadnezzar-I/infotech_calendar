@@ -1,6 +1,6 @@
 ## Tasks
 
-### 31-12-24 [date: "dmy"]
+### 31-12-24[date: "dmy"]
 - [ ] Create dashboard
 - [ ] Fix styles for live views
 - [ ] Prepare DB
