@@ -17,6 +17,6 @@
 - [ ] Validate all functionality
 - [ ] Optional: Write some tests
 
-### 3-1-25 [date: "mdy"]
+### 3-1-25
 - [ ] Make sure all is well
 - [ ] Deploy
