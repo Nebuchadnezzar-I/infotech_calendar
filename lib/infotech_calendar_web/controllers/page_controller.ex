@@ -1,0 +1,13 @@
+defmodule InfotechCalendarWeb.PageController do
+  use InfotechCalendarWeb, :controller
+
+  def home(conn, _params) do
+    # The home page is often custom made,
+    # so skip the default app layout.
+    render(conn, :home, layout: false)
+  end
+
+  def calendar(conn, _params) do
+    render(conn, :calendar, layout: false)
+  end
+end

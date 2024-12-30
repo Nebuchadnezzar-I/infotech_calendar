@@ -1,0 +1,43 @@
+<.flash_group flash={@flash} />
+<div class="w-full h-full flex items-center justify-center flex-col gap-3 p-3">
+  <%= if @current_user do %>
+
+  <.link href={~p"/users/dashboard"} style="background: rgba(66, 82, 255, 0.4);"
+  class="flex sm:p-6 p-4 border-l-[.5rem] hover:border-l-[1rem] border-[#4252FF] gap-2 rounded-md
+  w-full max-w-[600px] duration-150 cursor-pointer text-white sm:text-lg text-sm
+  ">
+    Go to <b>Dashboard</b>
+  </.link>
+
+  <.link href={~p"/users/settings"} style="background: rgba(48, 214, 26, 0.4);"
+  class="flex sm:p-6 p-4 border-l-[.5rem] hover:border-l-[1rem] border-[#30D61A] gap-2 rounded-md
+  w-full max-w-[600px] duration-150 cursor-pointer text-white sm:text-lg text-sm
+  ">
+    Settings
+  </.link>
+
+  <.link href={~p"/users/log_out"} style="background: rgba(228, 28, 138, 0.4);" method="delete"
+  class="flex sm:p-6 p-4 border-l-[.5rem] hover:border-l-[1rem] border-[#E41C8A] gap-2 rounded-md
+  w-full max-w-[600px] duration-150 cursor-pointer text-white sm:text-lg text-sm
+  ">
+    Log out
+  </.link>
+
+  <% else %>
+
+  <.link href={~p"/calendar"} style="background: rgba(66, 82, 255, 0.4);"
+    class="flex sm:p-6 p-4 border-l-[.5rem] hover:border-l-[1rem] border-[#4252FF] gap-2 rounded-md
+    w-full max-w-[600px] duration-150 cursor-pointer text-white sm:text-lg text-sm
+    ">
+    Go to <b>Calendar</b>
+  </.link>
+
+  <.link href={~p"/users/log_in"} style="background: rgba(228, 28, 138, 0.4);"
+  class="flex sm:p-6 p-4 border-l-[.5rem] hover:border-l-[1rem] border-[#E41C8A] gap-2 rounded-md
+  w-full max-w-[600px] duration-150 cursor-pointer text-white sm:text-lg text-sm
+  ">
+    Log in
+  </.link>
+
+  <% end %>
+</div>
