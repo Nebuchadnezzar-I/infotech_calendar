@@ -1,9 +1,9 @@
 ## Tasks
 
 ### 31.12.24
-- [ ] Create dashboard
-- [ ] Fix styles for live views
-- [ ] Prepare DB
+- [x] Create dashboard
+- [x] Fix styles for live views
+- [-] Prepare DB
 
 ### 1.1.25
 - [ ] Fix DB

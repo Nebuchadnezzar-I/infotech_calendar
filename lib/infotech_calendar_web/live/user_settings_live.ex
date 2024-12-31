@@ -5,13 +5,13 @@ defmodule InfotechCalendarWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
-    <.header class="text-center bg-white p-4 rounded-md">
+    <.header class="text-center bg-white p-4 rounded-md w-full">
       Account Settings
       <:subtitle>Manage your account email address and password settings</:subtitle>
     </.header>
 
-    <div class="flex flex-col gap-3 mt-3">
-      <div class="bg-white p-4 rounded-md">
+    <div class="flex gap-3 mt-3 w-full">
+      <div class="bg-white p-4 rounded-md w-full">
         <.simple_form
           for={@email_form}
           id="email_form"
@@ -33,7 +33,7 @@ defmodule InfotechCalendarWeb.UserSettingsLive do
           </:actions>
         </.simple_form>
       </div>
-      <div class="bg-white p-4 rounded-md">
+      <div class="bg-white p-4 rounded-md w-full">
         <.simple_form
           for={@password_form}
           id="password_form"
