@@ -7,7 +7,7 @@ defmodule InfotechCalendarWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_infotech_calendar_key",
-    signing_salt: "2RmrLLeR",
+    signing_salt: "lhTqkvzi",
     same_site: "Lax"
   ]
 

@@ -9,21 +9,18 @@ import Config
 
 config :infotech_calendar,
   ecto_repos: [InfotechCalendar.Repo],
-  generators: [timestamp_type: :utc_datetime, binary_id: true]
+  generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
 config :infotech_calendar, InfotechCalendarWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [
-      html: InfotechCalendarWeb.ErrorHTML,
-      json: InfotechCalendarWeb.ErrorJSON
-    ],
+    formats: [html: InfotechCalendarWeb.ErrorHTML, json: InfotechCalendarWeb.ErrorJSON],
     layout: false
   ],
   pubsub_server: InfotechCalendar.PubSub,
-  live_view: [signing_salt: "dVi3roCe"]
+  live_view: [signing_salt: "YA/Z/RJS"]
 
 # Configures the mailer
 #
@@ -32,8 +29,7 @@ config :infotech_calendar, InfotechCalendarWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :infotech_calendar, InfotechCalendar.Mailer,
-  adapter: Swoosh.Adapters.Local
+config :infotech_calendar, InfotechCalendar.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

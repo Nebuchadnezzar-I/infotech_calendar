@@ -1,0 +1,18 @@
+
+15:50:19.121 [debug] handled notification client -> server workspace/didChangeWatchedFiles in 2ms
+
+15:50:23.927 [debug] handled notification client -> server workspace/didChangeWatchedFiles in 2ms
+
+15:50:31.506 [debug] handled notification client -> server workspace/didChangeWatchedFiles in 603µs
+
+15:50:50.806 id=2858 [debug] handled request client -> server shutdown in 3ms
+
+15:50:50.807 [error] Writer crashed (:epipe)
+
+15:50:50.808 [debug] sent notification server -> client window/logMessage
+
+15:50:50.808 [info] The runtime for infotech_calendar has successfully shut down.
+
+15:50:50.813 [debug] sent notification server -> client window/logMessage
+
+15:50:50.813 [info] Beginning DB migration...
