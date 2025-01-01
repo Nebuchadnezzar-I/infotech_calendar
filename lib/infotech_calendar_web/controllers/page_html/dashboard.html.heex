@@ -1,2 +1,63 @@
 <.flash_group flash={@flash} />
-Dashboard
+<div class="p-[8rem] h-full flex flex-col gap-3">
+
+  <!-- Search -->
+
+  <div class="flex items-center gap-4 h-12">
+    <div class="
+      border w-full h-full rounded-md border hover:border-white
+      duration-100 px-4
+    ">
+      <input
+        type="text"
+        class="
+          w-full bg-transparent outline-none border-none h-full
+          focus:outline-none focus:ring-0
+        "
+        placeholder="Search..."
+      />
+    </div>
+    <div class="
+      border w-min text-nowrap h-full px-6 cursor-pointer duration-100
+      flex items-center justify-center hover:bg-[#1a1a1aa1] rounded-md
+    ">
+      <h4>Sort by</h4>
+    </div>
+  </div>
+
+  <!-- Search -->
+
+  <div class="flex items-center gap-3">
+
+    <!--
+      Štátne sviatky, Kultúrne tradície, Meniny, Narodeniny,
+      Špeciálne dni, Pracovné voľno
+    -->
+    <%= for x <- 1..8 do %>
+      <div class="
+        border w-min text-nowrap h-full p-2 px-4 cursor-pointer duration-100
+        flex items-center justify-center hover:bg-[#1a1a1aa1] rounded-md
+      ">
+        <h4>Štátne sviatky</h4>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex items-center gap-[.5rem] h-full h-full overflow-hidden">
+    <div class="flex flex-col gap-3 w-full h-full overflow-y-auto pr-2 h-full box-border">
+     <%= for x <- 1..20 do %>
+        <div class="
+          border text-nowrap py-3 px-4 cursor-pointer duration-100
+          flex hover:bg-[#1a1a1aa1] rounded-md flex flex-col
+        ">
+          <h4>Štátny sviatok</h4>
+          <p>29.9</p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="flex flex-col gap-3 w-full h-full max-w-[400px] border rounded-md">
+    </div>
+  </div>
+
+</div>
