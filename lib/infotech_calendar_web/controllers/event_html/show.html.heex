@@ -1,0 +1,21 @@
+<.header>
+  Event {@event.id}
+  <:subtitle>This is a event record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/events/#{@event}/edit"}>
+      <.button>Edit event</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Type">{@event.type}</:item>
+  <:item title="Action type">{@event.action_type}</:item>
+  <:item title="Name">{@event.name}</:item>
+  <:item title="Date">{@event.date}</:item>
+  <:item title="Is repeating">{@event.is_repeating}</:item>
+  <:item title="Description">{@event.description}</:item>
+  <:item title="Location">{@event.location}</:item>
+</.list>
+
+<.back navigate={~p"/events"}>Back to events</.back>

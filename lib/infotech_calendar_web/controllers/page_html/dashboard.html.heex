@@ -1,5 +1,5 @@
 <.flash_group flash={@flash} />
-<div class="p-[8rem] h-full flex flex-col gap-3">
+<div class="lg:p-[8rem] md:p-[4rem] sm:p-[1rem] p-[.5rem] h-full flex flex-col gap-3">
 
   <!-- Search -->
 
@@ -23,11 +23,17 @@
     ">
       <h4>Sort by</h4>
     </div>
+    <div class="
+      border w-min text-nowrap h-full px-6 cursor-pointer duration-100
+      flex items-center justify-center hover:bg-[#1a1a1aa1] rounded-md
+    ">
+      <h4>New</h4>
+    </div>
   </div>
 
   <!-- Search -->
 
-  <div class="flex items-center gap-3">
+  <div class="flex items-center gap-3 overflow-x-auto scrollbar-hide">
 
     <!--
       Štátne sviatky, Kultúrne tradície, Meniny, Narodeniny,
@@ -43,20 +49,36 @@
     <% end %>
   </div>
 
-  <div class="flex items-center gap-[.5rem] h-full h-full overflow-hidden">
-    <div class="flex flex-col gap-3 w-full h-full overflow-y-auto pr-2 h-full box-border">
-     <%= for x <- 1..20 do %>
+  <div class="
+    flex items-center gap-[.5rem] h-full overflow-hidden overflow-x-auto snap-x snap-mandatory
+    scrollbar-hide
+  ">
+    <div class="
+      flex flex-col gap-3 w-full h-full overflow-y-auto box-border
+      min-w-full md:min-w-[0px] snap-center
+    ">
+      <%= if Enum.empty?(@events) do %>
+        <div class="
+          w-full h-full flex items-center justify-center
+          text-xl
+        ">No Events</div>
+      <% end %>
+
+      <%= for event <- @events do %>
         <div class="
           border text-nowrap py-3 px-4 cursor-pointer duration-100
-          flex hover:bg-[#1a1a1aa1] rounded-md flex flex-col
+          flex hover:bg-[#1a1a1aa1] rounded-md flex flex-col snap-always
         ">
-          <h4>Štátny sviatok</h4>
-          <p>29.9</p>
+          <h4><%= event.name %></h4>
+          <p><%= event.date %></p>
         </div>
       <% end %>
     </div>
 
-    <div class="flex flex-col gap-3 w-full h-full max-w-[400px] border rounded-md">
+    <div class="
+      flex flex-col gap-3 w-full h-full max-w-[400px] border rounded-md
+      min-w-full md:min-w-[0px] snap-center
+    ">
     </div>
   </div>
 

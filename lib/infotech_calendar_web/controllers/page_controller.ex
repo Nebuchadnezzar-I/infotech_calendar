@@ -1,5 +1,6 @@
 defmodule InfotechCalendarWeb.PageController do
   use InfotechCalendarWeb, :controller
+  alias InfotechCalendar.Events
 
   def home(conn, _params) do
     case validate_cookie(conn, "user_session") do
@@ -7,7 +8,7 @@ defmodule InfotechCalendarWeb.PageController do
         conn
         |> put_flash(:error, "You are not logged in.")
         |> render(:home, layout: false)
-  
+
       {:ok, _reason} ->
         conn
         |> redirect(to: "/dashboard")
@@ -19,17 +20,19 @@ defmodule InfotechCalendarWeb.PageController do
   end
 
   def dashboard(conn, _params) do
+    events = Events.list_events()
+
     case validate_cookie(conn, "user_session") do
       {:ok, _decrypted_value} ->
         conn
-        |> render(:dashboard, layout: false)
-  
+        |> render(:dashboard, layout: false, events: events)
+
       {:error, _reason} ->
         conn
         |> redirect(to: "/")
     end
   end
-  
+
 
   def not_found(conn, _params) do
     render(conn, :not_found, layout: false)
@@ -54,7 +57,7 @@ defmodule InfotechCalendarWeb.PageController do
     secret = Application.get_env(:your_app, :cookie_secret, "your-very-secret-key")
     signing_key = Plug.Crypto.KeyGenerator.generate(secret, "signing")
     encryption_key = Plug.Crypto.KeyGenerator.generate(secret, "encryption")
-    
+
     Plug.Crypto.MessageEncryptor.encrypt(data, encryption_key, signing_key)
   end
 
@@ -66,12 +69,12 @@ defmodule InfotechCalendarWeb.PageController do
     case conn.req_cookies["user_session"] do
       nil ->
         {:error, "Cookie not found"}
-  
+
       encrypted_value ->
         case Plug.Crypto.MessageEncryptor.decrypt(encrypted_value, encryption_key, signing_key) do
           {:ok, decrypted_value} ->
             {:ok, decrypted_value}
-  
+
           :error ->
             {:error, "Invalid or tampered cookie"}
         end

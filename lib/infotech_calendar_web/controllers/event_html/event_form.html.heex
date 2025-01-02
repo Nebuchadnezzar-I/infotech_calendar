@@ -1,0 +1,15 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:type]} type="text" label="Type" />
+  <.input field={f[:action_type]} type="text" label="Action type" />
+  <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:date]} type="date" label="Date" />
+  <.input field={f[:is_repeating]} type="checkbox" label="Is repeating" />
+  <.input field={f[:description]} type="text" label="Description" />
+  <.input field={f[:location]} type="text" label="Location" />
+  <:actions>
+    <.button>Save Event</.button>
+  </:actions>
+</.simple_form>
