@@ -19,6 +19,28 @@ defmodule InfotechCalendar.Events do
   """
   def list_events do
     Repo.all(Event)
+    |> Enum.map(fn event ->
+      %{
+        event
+          | date: format_date(event.date)
+      }
+    end)
+  end
+
+  def search_events(query) do
+    from(e in Event, where: fragment("lower(name) LIKE ?", ^"%#{String.downcase(query)}%"))
+    |> Repo.all()
+    |> Enum.map(fn event ->
+      %{
+        event
+          | date: format_date(event.date)
+      }
+    end)
+  end
+
+  def get_unique_event_types do
+    from(e in Event, select: e.type, distinct: true)
+    |> Repo.all()
   end
 
   @doc """
@@ -101,4 +123,24 @@ defmodule InfotechCalendar.Events do
   def change_event(%Event{} = event, attrs \\ %{}) do
     Event.changeset(event, attrs)
   end
+
+  ## Helper
+  defp format_date(%Date{} = date) do
+    "#{pad_zero(date.day)}.#{pad_zero(date.month)}.#{date.year}"
+  end
+
+  defp format_date(date) when is_binary(date) do
+    case Date.from_iso8601(date) do
+      {:ok, date_struct} ->
+        "#{pad_zero(date_struct.day)}.#{pad_zero(date_struct.month)}.#{date_struct.year}"
+
+      {:error, _reason} ->
+        "Invalid date"
+    end
+  end
+
+  defp format_date(_), do: "Invalid date"
+  defp pad_zero(value) when value < 10, do: "0#{value}"
+  defp pad_zero(value), do: Integer.to_string(value)
+  ##
 end
