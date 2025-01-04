@@ -1,0 +1,86 @@
+<div class="
+        flex flex-col gap-3 w-full h-full max-h-[100dvh] box-border
+        lg:p-[6rem] md:p-[3rem] sm:p-[1rem] p-[.5rem] overflow-y-auto
+    ">
+  
+<!-- Header -->
+  <div class="flex gap-3">
+    <input
+      class="
+                text-md
+                w-full p-3 px-5 bg-transparent border duration-100
+                rounded-md ring-0 outline-none focus:ring-0 rounded-bl-sm focus:bg-border
+            "
+      placeholder="Search..."
+      name="query"
+      phx-debounce="300"
+      phx-keyup="search"
+      phx-value-query={@query}
+      value={@query}
+    />
+
+    <.link patch={~p"/events/new"}>
+      <button class="p-3 px-5 bg-transparent border rounded-md hover:bg-border duration-100">
+        New
+      </button>
+    </.link>
+  </div>
+  
+<!-- Type select -->
+  <div class="flex gap-3 overflow-x-auto scrollbar-hide pb-1">
+    <%= if not Enum.empty?(@event_types) do %>
+      <%= for type <- @event_types do %>
+        <div class="
+                    rounded-sm px-3 hover:bg-border cursor-pointer h-[2rem] flex items-center
+                    bg-transparent border duration-100 text-nowrap scroll-hidden
+                    ">
+          {type}
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  
+<!-- Main -->
+  <div class="flex gap-3 w-full h-full overflow-y-auto">
+    <%= if Enum.empty?(@events) do %>
+      <div class="
+                w-full h-full flex items-center justify-center
+                text-xl
+                ">
+        No Events
+      </div>
+    <% else %>
+      <div class="flex flex-col gap-3 w-full h-full box-border snap-center w-full scrollbar-hide">
+        <%= for event <- @events do %>
+          <.link
+            navigate={~p"/events/#{event}"}
+            class="
+                        border py-3 px-4 cursor-pointer duration-100 grid
+                        md:grid-cols-4 grid-cols-1
+                        flex hover:bg-[#1a1a1aa1] rounded-md flex flex-col snap-always
+                        "
+          >
+            <p>{event.name}</p>
+            <p>{event.date}</p>
+          </.link>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="event-modal"
+  show
+  on_cancel={JS.patch(~p"/events")}
+>
+  <.live_component
+    module={InfotechCalendarWeb.EventLive.FormComponent}
+    id={@event.id || :new}
+    title={@page_title}
+    action={@live_action}
+    event={@event}
+    patch={~p"/events"}
+  />
+</.modal>

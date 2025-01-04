@@ -1,0 +1,80 @@
+<div class="
+        flex flex-col gap-3 w-full h-full max-h-[100dvh] box-border
+        lg:p-[6rem] md:p-[3rem] sm:p-[1rem] p-[.5rem] overflow-y-auto
+        text-white
+    ">
+  <div class="flex items-center justify-between">
+    <div class="text-lg font-semibold">
+      Event #{@event.id}
+    </div>
+
+    <div class="flex gap-3 items-center">
+      <.link patch={~p"/events/#{@event}/show/edit"} phx-click={JS.push_focus()}>
+        <button class="p-3 px-5 bg-transparent border rounded-md hover:bg-border duration-100">
+          Edit event
+        </button>
+      </.link>
+      <.link
+        phx-click={JS.push("delete", value: %{id: @event.id}) |> hide("##{@event.id}")}
+        data-confirm="Are you sure?"
+      >
+        <button class="p-3 px-5 bg-transparent border rounded-md hover:bg-border duration-100">
+          Delete
+        </button>
+      </.link>
+    </div>
+  </div>
+
+  <div class="flex flex-col mx-auto w-full">
+    <div class="grid grid-cols-2 border-b py-2 px-5">
+      <p>Type</p>
+      <p>{@event.type}</p>
+    </div>
+    <div class="grid grid-cols-2 border-b py-2 px-5">
+      <p>Action type</p>
+      <p>{@event.action_type}</p>
+    </div>
+    <div class="grid grid-cols-2 border-b py-2 px-5">
+      <p>Name</p>
+      <p>{@event.name}</p>
+    </div>
+    <div class="grid grid-cols-2 border-b py-2 px-5">
+      <p>Date</p>
+      <p>{@event.date}</p>
+    </div>
+    <div class="grid grid-cols-2 border-b py-2 px-5">
+      <p>Is repeating</p>
+      <p>{@event.is_repeating}</p>
+    </div>
+    <div class="grid grid-cols-2 border-b py-2 px-5">
+      <p>Description</p>
+      <p>{@event.description}</p>
+    </div>
+    <div class="grid grid-cols-2 border-b py-2 px-5">
+      <p>Location</p>
+      <p>{@event.location}</p>
+    </div>
+  </div>
+
+  <.link navigate={~p"/events"}>
+    <button class="p-3 px-5 bg-transparent border rounded-md hover:bg-border duration-100">
+      Return back
+    </button>
+  </.link>
+</div>
+
+<.modal
+  :if={@live_action == :edit}
+  id="event-modal"
+  show
+  on_cancel={JS.patch(~p"/events/#{@event}")}
+>
+  <.live_component
+    module={InfotechCalendarWeb.EventLive.FormComponent}
+    id={@event.id}
+    title={@page_title}
+    action={@live_action}
+    event={@event}
+    patch={~p"/events/#{@event}"}
+  />
+</.modal>

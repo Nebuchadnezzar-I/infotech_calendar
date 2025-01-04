@@ -1,76 +1,9 @@
 <.flash_group flash={@flash} />
 
-<div class="w-full h-full flex items-center justify-center">
-    <div class="flex flex-col gap-7">
-        <div class="flex flex-col gap-1">
-            <h3 class="text-2xl font-semibold">Login</h3>
-            <h3 class="text-xl opacity-70">Infotech Kiosk dashboard</h3>
-        </div>
-        <div class="flex items-center text-xl" id="login-input-otp">
-            <input autofocus maxlength="1" class="
-                outline-none rounded-l-md border focus:border-white
-                text-center w-14 h-14 bg-transparent focus:z-10
-            " />
-            <input maxlength="1" class="
-                outline-none border focus:border-white mr-[-1px] ml-[-1px]
-                text-center w-14 h-14 bg-transparent focus:z-10
-            " />
-            <input maxlength="1" class="
-                outline-none border focus:border-white focus:z-10
-                text-center w-14 h-14 bg-transparent rounded-r-md
-            " />
-
-            <div class="w-[24px] h-1 bg-[#494949] rounded-full mx-3"></div>
-
-            <input maxlength="1" class="
-                outline-none border focus:border-white focus:z-10
-                text-center w-14 h-14 bg-transparent rounded-l-md
-            " />
-            <input maxlength="1" class="
-                outline-none border focus:border-white mr-[-1px] ml-[-1px]
-                text-center w-14 h-14 bg-transparent focus:z-10
-            " />
-            <input maxlength="1" class="
-                outline-none bg-transparent focus:border-white focus:z-10
-                text-center w-14 h-14 rounded-r-md border
-            " />
-        </div>
-        <form action="/login_otp" method="post">
-            <input type="hidden" name="login-otp" />
-        </form>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const container = document.getElementById('login-input-otp');
-          const inputs = container.querySelectorAll('input');
-          const form = document.querySelector('form');
-          const hiddenInput = form.querySelector('input[name="login-otp"]');
-      
-          inputs.forEach((input, index) => {
-            input.addEventListener('input', () => {
-              // Automatically move focus to the next input if the current one is filled
-              if (input.value.length === input.maxLength) {
-                if (index < inputs.length - 1) {
-                  inputs[index + 1].focus();
-                } else {
-                  // Collect all input values and submit the form when the last input is filled
-                  const otpValue = Array.from(inputs).map(input => input.value).join('');
-                  hiddenInput.value = otpValue;
-                  form.submit();
-                }
-              }
-            });
-      
-            input.addEventListener('keydown', (e) => {
-              // Allow Backspace to move to the previous input
-              if (e.key === 'Backspace' && input.value.length === 0) {
-                if (index > 0) {
-                  inputs[index - 1].focus();
-                }
-              }
-            });
-          });
-        });
-      </script>
+<div class="
+    w-full h-full flex items-center justify-center gap-5
+    text-md
+">
+  <a class="hover:underline" href="/events">Events</a>
+  <a class="hover:underline" href="/calendar">Calendar</a>
 </div>

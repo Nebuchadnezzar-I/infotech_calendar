@@ -12,7 +12,7 @@ defmodule InfotechCalendar.EventsFixtures do
       attrs
       |> Enum.into(%{
         action_type: "some action_type",
-        date: ~D[2025-01-01],
+        date: ~D[2025-01-03],
         description: "some description",
         is_repeating: true,
         location: "some location",

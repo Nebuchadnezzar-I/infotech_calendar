@@ -8,7 +8,15 @@ defmodule InfotechCalendar.EventsTest do
 
     import InfotechCalendar.EventsFixtures
 
-    @invalid_attrs %{name: nil, type: nil, date: nil, description: nil, location: nil, action_type: nil, is_repeating: nil}
+    @invalid_attrs %{
+      name: nil,
+      type: nil,
+      date: nil,
+      description: nil,
+      location: nil,
+      action_type: nil,
+      is_repeating: nil
+    }
 
     test "list_events/0 returns all events" do
       event = event_fixture()
@@ -21,12 +29,20 @@ defmodule InfotechCalendar.EventsTest do
     end
 
     test "create_event/1 with valid data creates a event" do
-      valid_attrs = %{name: "some name", type: "some type", date: ~D[2025-01-01], description: "some description", location: "some location", action_type: "some action_type", is_repeating: true}
+      valid_attrs = %{
+        name: "some name",
+        type: "some type",
+        date: ~D[2025-01-03],
+        description: "some description",
+        location: "some location",
+        action_type: "some action_type",
+        is_repeating: true
+      }
 
       assert {:ok, %Event{} = event} = Events.create_event(valid_attrs)
       assert event.name == "some name"
       assert event.type == "some type"
-      assert event.date == ~D[2025-01-01]
+      assert event.date == ~D[2025-01-03]
       assert event.description == "some description"
       assert event.location == "some location"
       assert event.action_type == "some action_type"
@@ -39,12 +55,21 @@ defmodule InfotechCalendar.EventsTest do
 
     test "update_event/2 with valid data updates the event" do
       event = event_fixture()
-      update_attrs = %{name: "some updated name", type: "some updated type", date: ~D[2025-01-02], description: "some updated description", location: "some updated location", action_type: "some updated action_type", is_repeating: false}
+
+      update_attrs = %{
+        name: "some updated name",
+        type: "some updated type",
+        date: ~D[2025-01-04],
+        description: "some updated description",
+        location: "some updated location",
+        action_type: "some updated action_type",
+        is_repeating: false
+      }
 
       assert {:ok, %Event{} = event} = Events.update_event(event, update_attrs)
       assert event.name == "some updated name"
       assert event.type == "some updated type"
-      assert event.date == ~D[2025-01-02]
+      assert event.date == ~D[2025-01-04]
       assert event.description == "some updated description"
       assert event.location == "some updated location"
       assert event.action_type == "some updated action_type"

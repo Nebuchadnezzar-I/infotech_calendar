@@ -20,7 +20,7 @@ config :infotech_calendar, InfotechCalendarWeb.Endpoint,
     layout: false
   ],
   pubsub_server: InfotechCalendar.PubSub,
-  live_view: [signing_salt: "YA/Z/RJS"]
+  live_view: [signing_salt: "cC4fVdst"]
 
 # Configures the mailer
 #

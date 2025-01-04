@@ -14,7 +14,7 @@ config :infotech_calendar, InfotechCalendar.Repo,
 # you can enable the server option below.
 config :infotech_calendar, InfotechCalendarWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "V8OKitpqfU+Eqi7h+RdGNEj4cYY5lhaFpzbK5AuRMMbyrQ0uYpPtfr5ofnXedZD9",
+  secret_key_base: "OTJzM2v+aI/y7qzcXN0L/qUZyzj+2DhlvI9Nh4Qmdvb75dRrWpnQpXCLJuSKhgng",
   server: false
 
 # In test we don't send emails

@@ -18,6 +18,6 @@ defmodule InfotechCalendar.Events.Event do
   def changeset(event, attrs) do
     event
     |> cast(attrs, [:type, :action_type, :name, :date, :is_repeating, :description, :location])
-    |> validate_required([:type, :action_type, :name, :date, :is_repeating, :description, :location])
+    |> validate_required([:type, :name, :date, :is_repeating])
   end
 end

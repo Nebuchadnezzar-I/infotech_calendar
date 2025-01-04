@@ -1,0 +1,18 @@
+<%= for {_id, event} <- @streams.events do %>
+  <div>
+    <p>Type: {event.type}</p>
+    <p>Name: {event.name}</p>
+    <p>Date: {event.date}</p>
+    <p>Location: {event.location}</p>
+  </div>
+<% end %>
+
+<!--
+<:col :let={{_id, event}} label="Type">{event.type}</:col>
+<:col :let={{_id, event}} label="Action type">{event.action_type}</:col>
+<:col :let={{_id, event}} label="Name">{event.name}</:col>
+<:col :let={{_id, event}} label="Date">{event.date}</:col>
+<:col :let={{_id, event}} label="Is repeating">{event.is_repeating}</:col>
+<:col :let={{_id, event}} label="Description">{event.description}</:col>
+<:col :let={{_id, event}} label="Location">{event.location}</:col>
+-->

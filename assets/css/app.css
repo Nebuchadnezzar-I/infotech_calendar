@@ -23,6 +23,7 @@
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 60 9.1% 97.8%;
         --border: 20 5.9% 90%;
+        --border-active: 20 5.9% 100%;
         --input: 20 5.9% 90%;
         --ring: 20 14.3% 4.1%;
         --chart-1: 12 76% 61%;
@@ -92,3 +93,4 @@
         scrollbar-width: none; /* Firefox */
     }
 }
+
