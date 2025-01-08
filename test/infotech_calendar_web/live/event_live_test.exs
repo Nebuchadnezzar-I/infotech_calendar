@@ -73,7 +73,9 @@ defmodule InfotechCalendarWeb.EventLiveTest do
     test "updates event in listing", %{conn: conn, event: event} do
       {:ok, index_live, _html} = live(conn, ~p"/events")
 
-      assert index_live |> element("#events-#{event.id} a", "Edit") |> render_click() =~
+      assert index_live
+             |> element("#events-#{event.id} a", "Edit")
+             |> render_click() =~
                "Edit Event"
 
       assert_patch(index_live, ~p"/events/#{event}/edit")
@@ -96,7 +98,10 @@ defmodule InfotechCalendarWeb.EventLiveTest do
     test "deletes event in listing", %{conn: conn, event: event} do
       {:ok, index_live, _html} = live(conn, ~p"/events")
 
-      assert index_live |> element("#events-#{event.id} a", "Delete") |> render_click()
+      assert index_live
+             |> element("#events-#{event.id} a", "Delete")
+             |> render_click()
+
       refute has_element?(index_live, "#events-#{event.id}")
     end
   end

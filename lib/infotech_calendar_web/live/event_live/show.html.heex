@@ -15,7 +15,9 @@
         </button>
       </.link>
       <.link
-        phx-click={JS.push("delete", value: %{id: @event.id}) |> hide("##{@event.id}")}
+        phx-click={
+          JS.push("delete", value: %{id: @event.id}) |> hide("##{@event.id}")
+        }
         data-confirm="Are you sure?"
       >
         <button class="p-3 px-5 bg-transparent border rounded-md hover:bg-border duration-100">

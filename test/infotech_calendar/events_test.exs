@@ -78,7 +78,10 @@ defmodule InfotechCalendar.EventsTest do
 
     test "update_event/2 with invalid data returns error changeset" do
       event = event_fixture()
-      assert {:error, %Ecto.Changeset{}} = Events.update_event(event, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Events.update_event(event, @invalid_attrs)
+
       assert event == Events.get_event!(event.id)
     end
 

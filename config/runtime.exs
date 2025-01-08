@@ -23,10 +23,7 @@ end
 if config_env() == :prod do
   database_path =
     System.get_env("DATABASE_PATH") ||
-      raise """
-      environment variable DATABASE_PATH is missing.
-      For example: /etc/infotech_calendar/infotech_calendar.db
-      """
+      Path.expand("../infotech_calendar_dev.db", __DIR__)
 
   config :infotech_calendar, InfotechCalendar.Repo,
     database: database_path,
@@ -47,7 +44,9 @@ if config_env() == :prod do
   host = System.get_env("PHX_HOST") || "example.com"
   port = String.to_integer(System.get_env("PORT") || "4000")
 
-  config :infotech_calendar, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
+  config :infotech_calendar,
+         :dns_cluster_query,
+         System.get_env("DNS_CLUSTER_QUERY")
 
   config :infotech_calendar, InfotechCalendarWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],

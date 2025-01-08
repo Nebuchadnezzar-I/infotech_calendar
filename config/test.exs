@@ -14,11 +14,13 @@ config :infotech_calendar, InfotechCalendar.Repo,
 # you can enable the server option below.
 config :infotech_calendar, InfotechCalendarWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "OTJzM2v+aI/y7qzcXN0L/qUZyzj+2DhlvI9Nh4Qmdvb75dRrWpnQpXCLJuSKhgng",
+  secret_key_base:
+    "OTJzM2v+aI/y7qzcXN0L/qUZyzj+2DhlvI9Nh4Qmdvb75dRrWpnQpXCLJuSKhgng",
   server: false
 
 # In test we don't send emails
-config :infotech_calendar, InfotechCalendar.Mailer, adapter: Swoosh.Adapters.Test
+config :infotech_calendar, InfotechCalendar.Mailer,
+  adapter: Swoosh.Adapters.Test
 
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false

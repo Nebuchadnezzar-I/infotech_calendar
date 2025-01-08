@@ -20,9 +20,12 @@ config :infotech_calendar, InfotechCalendarWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "Zi8/9cTwyETVmOqrzH3OJtR7imhBVrIx/crlR+eaiOhkMfxLYz+z8SeeNa+Rutrv",
+  secret_key_base:
+    "Zi8/9cTwyETVmOqrzH3OJtR7imhBVrIx/crlR+eaiOhkMfxLYz+z8SeeNa+Rutrv",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:infotech_calendar, ~w(--sourcemap=inline --watch)]},
+    esbuild:
+      {Esbuild, :install_and_run,
+       [:infotech_calendar, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:infotech_calendar, ~w(--watch)]}
   ]
 

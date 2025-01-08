@@ -11,8 +11,11 @@ defmodule InfotechCalendar.Application do
       InfotechCalendarWeb.Telemetry,
       InfotechCalendar.Repo,
       {Ecto.Migrator,
-       repos: Application.fetch_env!(:infotech_calendar, :ecto_repos), skip: skip_migrations?()},
-      {DNSCluster, query: Application.get_env(:infotech_calendar, :dns_cluster_query) || :ignore},
+       repos: Application.fetch_env!(:infotech_calendar, :ecto_repos),
+       skip: skip_migrations?()},
+      {DNSCluster,
+       query:
+         Application.get_env(:infotech_calendar, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: InfotechCalendar.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: InfotechCalendar.Finch},

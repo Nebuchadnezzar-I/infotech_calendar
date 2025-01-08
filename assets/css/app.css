@@ -89,8 +89,16 @@
     }
 
     .scrollbar-hide {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .select-smooth {
+        transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    }
+
+    .A818-BaseStyle {
+        @apply cursor-pointer select-smooth rounded-tl-sm h-[3rem] px-4 flex items-center justify-center border-b-4 text-xl text-nowrap;
     }
 }
 

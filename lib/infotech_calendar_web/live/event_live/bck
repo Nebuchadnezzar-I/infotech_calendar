@@ -1,0 +1,44 @@
+<!-- Type select
+    <div class="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
+
+        <%= if not Enum.empty?(@event_types) do %>
+            <%= for type <- @event_types do %>
+                <div class="
+                    rounded-sm px-3 hover:bg-border cursor-pointer h-[2rem] flex items-center
+                    bg-transparent border duration-100 text-nowrap scroll-hidden
+                ">
+                {type}
+                </div>
+            <% end %>
+        <% end %>
+        </div>
+
+        <div class="flex gap-3 w-full h-full overflow-y-auto">
+        <%= if Enum.empty?(@events) do %>
+            <div class="
+                w-full h-full flex items-center justify-center
+                text-xl
+            ">No Events</div>
+        <% else %>
+            <div class="
+                flex flex-col gap-3 w-full h-full box-border
+                snap-center w-full scrollbar-hide
+            ">
+
+            <%= for event <- @events do %>
+                <.link
+                    navigate={~p"/events/#{event}"}
+                    class="
+                        border py-3 px-4 cursor-pointer duration-100 grid
+                        md:grid-cols-4 grid-cols-1
+                        flex hover:bg-[#1a1a1aa1] rounded-md flex flex-col snap-always
+                    "
+                >
+                    <p>{event.name}</p>
+                    <p>{event.date}</p>
+                </.link>
+            <% end %>
+            </div>
+        <% end %>
+    </div>
+    -->
